@@ -5,13 +5,10 @@ use hyprland::shared::Address;
 
 use serde::{Deserialize, Serialize};
 
-const DEFAULT_ICON: &str = "/usr/share/icons/breeze/categories/32/applications-all.svg";
-
 #[derive(Serialize, Deserialize)]
 struct Entry {
     title: String,
     class: String,
-    icon: String,
     tasks: Vec<Task>
 }
 
@@ -53,7 +50,6 @@ fn main() -> Result<()> {
                 entries.push(Entry {
                     title: client.initial_title.to_owned(),
                     class: client.class.to_owned(),
-                    icon: format!("/usr/share/icons/WhiteSur/apps/scalable/{}.svg", client.class.to_owned()),
                     tasks: vec![task]
                 })
             }
