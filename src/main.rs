@@ -40,7 +40,7 @@ fn main() -> Result<()> {
         }).nth(0).unwrap().title.clone();
 
         let mut e = e.lock().unwrap();
-        e.rename_task(address, title);
+        e.rename_task(address, title, None);
         e.print();
     });
 

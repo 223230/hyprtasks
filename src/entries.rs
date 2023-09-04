@@ -59,8 +59,13 @@ impl EntryList {
         self.entries.retain(|e| e.tasks.len() > 0);
     }
 
-    pub fn rename_task(&mut self, address: Address, title: String) {
+    pub fn rename_task(&mut self, address: Address, title: String, initial_title: Option<String>) {
         self.entries.iter_mut().for_each(|entry| {
+            match initial_title.clone() {
+                Some(t) => entry.title = t,
+                None => {}
+            };
+
             entry.tasks.iter_mut().filter(|task| {
                 task.address.clone().as_vec() == address.clone().as_vec()
             }).for_each(|task| {
